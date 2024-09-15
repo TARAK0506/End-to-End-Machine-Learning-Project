@@ -1,14 +1,44 @@
 import pickle
-from flask import Flask, request, app, jsonify,url_for,redirect,render_template
+from flask import Flask, request, app, jsonify,render_template 
+from urllib.parse import quote
 
-import numpy as np
-import pandas as pd
+import numpy as np 
+import pandas as pd 
 
 app = Flask(__name__)
 
+
+import os
+
+# Use relative path
+model_path = os.path.join("boston_house_price_prediction_model.pkl")
+
 # Load the model
-model = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_model.pkl','rb'))
-scaler = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_scaler.pkl','rb'))
+try:
+    with open(model_path, 'rb') as file:
+        model = pickle.load(file)
+except FileNotFoundError:
+    print(f"File not found: {model_path}")
+    
+# Use relative path
+scaler_path = os.path.join("boston_house_price_prediction_scaler.pkl")
+
+# Load the model
+try:
+    with open(scaler_path, 'rb') as file:
+        scaler = pickle.load(file)
+except FileNotFoundError:
+    print(f"File not found: {scaler_path}")
+    
+
+
+# # Load the model
+# # model = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_model.pkl','rb'))
+# model = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_model.pkl', 'rb'))
+# scaler = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_scaler.pkl','rb'))
+# # scaler = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_scaler.pkl','rb'))
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -30,6 +60,7 @@ def predict():
     output = round(prediction[0], 2)
     return render_template('index.html', prediction_text='House price should be $ {}'.format(output))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
     
