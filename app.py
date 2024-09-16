@@ -32,12 +32,6 @@ except FileNotFoundError:
     
 
 
-# # Load the model
-# # model = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_model.pkl','rb'))
-# model = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_model.pkl', 'rb'))
-# scaler = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_scaler.pkl','rb'))
-# # scaler = pickle.load(open(r'C:\Users\tarak\Downloads\Data Science\Machine Learning\Regression\Boston House Price Prediction\Notebook\boston_house_price_prediction_scaler.pkl','rb'))
-
 
 @app.route('/')
 def home():
