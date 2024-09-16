@@ -1,5 +1,5 @@
 logs/
-.docker-compose.yml
+# .docker-compose.yml
 .git
 *.md
 .cache
