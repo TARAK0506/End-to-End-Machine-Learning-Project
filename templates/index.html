@@ -3,35 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Boston House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #444;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="text"] {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .prediction {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
-    <h1>Boston House Price Prediction </h1>
-    <form action="{{ url_for('predict')}}" method="post">
-        <input type="text" name="CRIM" placeholder="CRIM" required="required" /><br>
-    	<input type="text" name="ZN" placeholder="ZN" required="required" /><br>
-        <input type="text" name="INDUS" placeholder="INDUS" required="required" /><br>
-        <input type="text" name="CHAS" placeholder="CHAS" required="required" /><br>
-        <input type="text" name="NOX" placeholder="NOX" required="required" /><br>
-        <input type="text" name="RM" placeholder="RM" required="required" /><br>
-        <input type="text" name="Age" placeholder="Age" required="required" /><br>
-        <input type="text" name="DIS" placeholder="DIS" required="required" /><br>
-        <input type="text" name="RAD" placeholder="RAD" required="required" /><br>
-        <input type="text" name="TAX" placeholder="TAX" required="required" /><br>
-        <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" /><br>
-        <input type="text" name="B" placeholder="B" required="required" /><br>
-        <input type="text" name="LSTAT" placeholder="LSTAT" required="required" /><br>
-
-
-        <button type="submit" class = "btn btn-primary-block btn-large">Predict</button>
-
-    </form>
-    <br>
-    <br>
-    <br>
-    <div>
-
-        <h1> Predicted Price: {{ prediction_text }} </h1>
+    <div class="container">
+        <h1>Boston House Price Prediction</h1>
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="CRIM" placeholder="CRIM" required="required" />
+            <input type="text" name="ZN" placeholder="ZN" required="required" />
+            <input type="text" name="INDUS" placeholder="INDUS" required="required" />
+            <input type="text" name="CHAS" placeholder="CHAS" required="required" />
+            <input type="text" name="NOX" placeholder="NOX" required="required" />
+            <input type="text" name="RM" placeholder="RM" required="required" />
+            <input type="text" name="Age" placeholder="Age" required="required" />
+            <input type="text" name="DIS" placeholder="DIS" required="required" />
+            <input type="text" name="RAD" placeholder="RAD" required="required" />
+            <input type="text" name="TAX" placeholder="TAX" required="required" />
+            <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" />
+            <input type="text" name="B" placeholder="B" required="required" />
+            <input type="text" name="LSTAT" placeholder="LSTAT" required="required" />
+            <button type="submit" class="btn btn-primary-block btn-large">Predict</button>
+        </form>
+        <div class="prediction">
+            <h1>Predicted Price: {{ prediction_text }}</h1>
+        </div>
     </div>
 </body>
 </html>
